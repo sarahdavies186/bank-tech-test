@@ -7,4 +7,9 @@ describe('BankStatement class', () => {
   expect(bankStatement.getBalance()).toBe(0)
   })
 
+  it('increases the balance when a deposit is made', () => {
+    bankStatement.makeDeposit(1000.00);
+    expect(bankStatement.getBalance()).toBe(1000.00)
+    })
+
 })
