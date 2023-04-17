@@ -75,8 +75,8 @@ describe("BankStatement class", () => {
     expect(consoleSpy).toHaveBeenCalled()
     expect(consoleSpy).toHaveBeenCalledTimes(3);
     expect(consoleSpy.mock.calls[0]).toEqual(['date || credit || debit || balance']),
-    expect(consoleSpy.mock.calls[1]).toEqual(['10/01/2023 || 1000.00 || || 1000.00']);
-    expect(consoleSpy.mock.calls[2]).toEqual(['14/01/2023 || || 500.00 || 500.00']);
+    expect(consoleSpy.mock.calls[1]).toEqual(['14/01/2023 || || 500.00 || 500.00']);
+    expect(consoleSpy.mock.calls[2]).toEqual(['10/01/2023 || 1000.00 || || 1000.00']);
 
     consoleSpy.mockRestore();
   });

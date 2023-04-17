@@ -34,7 +34,7 @@ class BankStatement {
 
   print() {
     console.log("date || credit || debit || balance")
-    this.statement.forEach((transaction => {
+    this.statement.reverse().forEach((transaction => {
       console.log(transaction)
     }))
   }
