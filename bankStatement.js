@@ -25,6 +25,8 @@ class BankStatement {
     if (typeof int === 'number' && !isNaN(int) && !isNaN(parseFloat(int))) {
       const formattedInt = parseFloat(int.toFixed(2));
       this.balance = this.balance - formattedInt;
+      const statement = `${date} || || ${formattedInt.toFixed(2)} || ${this.balance.toFixed(2)}`
+      this.statement.push(statement)
     } else {
       throw new Error('Input should be an integer');
     }
@@ -32,7 +34,9 @@ class BankStatement {
 
   print() {
     console.log("date || credit || debit || balance")
-    console.log(this.statement)
+    this.statement.forEach((transaction => {
+      console.log(transaction)
+    }))
   }
 }
 
