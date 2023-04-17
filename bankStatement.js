@@ -1,3 +1,5 @@
+const { format } = require("prettier");
+
 class BankStatement {
   constructor() {
     this.balance = 0;
@@ -8,19 +10,28 @@ class BankStatement {
   }
 
   makeDeposit(int) {
-    if (!Number.isInteger(int)) {
-      throw new Error("input should be an integer");
+    if (typeof int === 'number' && !isNaN(int) && !isNaN(parseFloat(int))) {
+      const formattedInt = parseFloat(int.toFixed(2));
+      this.balance = this.balance + formattedInt;
+    } else {
+      throw new Error('Input should be an integer');
     }
-    this.balance = this.balance + int;
   }
 
   makeWithdrawal(int) {
-    if (!Number.isInteger(int)) {
-      throw new Error("input should be an integer");
+    if (typeof int === 'number' && !isNaN(int) && !isNaN(parseFloat(int))) {
+      const formattedInt = parseFloat(int.toFixed(2));
+      this.balance = this.balance - formattedInt;
+    } else {
+      throw new Error('Input should be an integer');
     }
-    this.balance = this.balance - int;
   }
 }
 
 module.exports = BankStatement;
 
+
+// const BankStatement = require('./bankStatement.js')
+// const bankStatement = new BankStatement();
+// bankStatement.makeDeposit(100)
+// bankStatement.getBalance();

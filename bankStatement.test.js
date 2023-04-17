@@ -32,12 +32,22 @@ describe("BankStatement class", () => {
   it("throws an error message when the wrong input is given", () => {
     expect(() => {
       bankStatement.makeDeposit("deposit money");
-    }).toThrow("input should be an integer")
+    }).toThrow("Input should be an integer");
   });
 
   it("throws an error message when the wrong input is given", () => {
     expect(() => {
       bankStatement.makeWithdrawal("withdraw money");
-    }).toThrow("input should be an integer")
+    }).toThrow("Input should be an integer");
   });
+
+  it('rounds to 2 decimal places', () => {
+    bankStatement.makeDeposit(1000.33);
+    expect(bankStatement.getBalance()).toBe(1000.33)
+    })
+
+  it('rounds to 2 decimal places', () => {
+    bankStatement.makeDeposit(1000.67733); 
+    expect(bankStatement.getBalance()).toBe(1000.68)
+    })
 });
