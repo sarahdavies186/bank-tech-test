@@ -1,12 +1,12 @@
 const BankStatement = require("./bankStatement");
 
 describe("BankStatement class", () => {
-  let bankStatement 
+  let bankStatement;
 
   beforeEach(() => {
     bankStatement = new BankStatement();
   });
-  
+
   it("starts with an inital balance of 0", () => {
     expect(bankStatement.getBalance()).toBe(0);
   });
@@ -22,10 +22,22 @@ describe("BankStatement class", () => {
     expect(bankStatement.getBalance()).toBe(3000.0);
   });
 
-  it('shows the correct blance when deposits and withdrawals are made', () => {
-    bankStatement.makeDeposit(1000.00);
-    bankStatement.makeDeposit(2000.00);
-    bankStatement.makeWithdrawal(500.00);
-    expect(bankStatement.getBalance()).toBe(2500.00)
-    })
+  it("shows the correct blance when deposits and withdrawals are made", () => {
+    bankStatement.makeDeposit(1000.0);
+    bankStatement.makeDeposit(2000.0);
+    bankStatement.makeWithdrawal(500.0);
+    expect(bankStatement.getBalance()).toBe(2500.0);
+  });
+
+  it("throws an error message when the wrong input is given", () => {
+    expect(() => {
+      bankStatement.makeDeposit("deposit money");
+    }).toThrow("input should be an integer")
+  });
+
+  it("throws an error message when the wrong input is given", () => {
+    expect(() => {
+      bankStatement.makeWithdrawal("withdraw money");
+    }).toThrow("input should be an integer")
+  });
 });

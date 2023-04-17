@@ -8,10 +8,16 @@ class BankStatement {
   }
 
   makeDeposit(int) {
+    if (!Number.isInteger(int)) {
+      throw new Error("input should be an integer");
+    }
     this.balance = this.balance + int;
   }
 
   makeWithdrawal(int) {
+    if (!Number.isInteger(int)) {
+      throw new Error("input should be an integer");
+    }
     this.balance = this.balance - int;
   }
 }
