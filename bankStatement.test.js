@@ -59,7 +59,22 @@ describe("BankStatement class", () => {
 
     expect(consoleSpy).toHaveBeenCalled()
     expect(consoleSpy).toHaveBeenCalledTimes(2);
-    expect(consoleSpy.mock.calls).toContainEqual(['date || credit || debit || balance'], ['10/01/2023 || 1000.00 || || 1000.00']);
+    expect(consoleSpy.mock.calls[0]).toEqual(['date || credit || debit || balance']),
+    expect(consoleSpy.mock.calls[1]).toContainEqual(['10/01/2023 || 1000.00 || || 1000.00']);
+
+    consoleSpy.mockRestore();
+  });
+
+  xit('shows the statement for a deposit and withdrawal with a date, under the headings', () => {
+    const consoleSpy = jest.spyOn(global.console, 'log');
+    
+    bankStatement.makeDeposit(1000.00, "10/01/2023")
+    bankStatement.makeWithdrawal(500.00, "14/01/2023")
+    bankStatement.print();
+
+    expect(consoleSpy).toHaveBeenCalled()
+    expect(consoleSpy).toHaveBeenCalledTimes(2);
+    expect(consoleSpy.mock.calls[1]).toContainEqual(['date || credit || debit || balance'], ['14/01/2023 || || 500.00 || 500.00'], ['10/01/2023 || 1000.00 || || 1000.00']);
 
     consoleSpy.mockRestore();
   });
