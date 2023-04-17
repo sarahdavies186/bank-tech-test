@@ -3,22 +3,25 @@ const { format } = require("prettier");
 class BankStatement {
   constructor() {
     this.balance = 0;
+    this.statement = []
   }
 
   getBalance() {
     return this.balance;
   }
 
-  makeDeposit(int) {
+  makeDeposit(int, date) {
     if (typeof int === 'number' && !isNaN(int) && !isNaN(parseFloat(int))) {
       const formattedInt = parseFloat(int.toFixed(2));
       this.balance = this.balance + formattedInt;
+      const statement = `${date} || ${int} || || ${this.balance}`
+      this.statement.push(statement)
     } else {
       throw new Error('Input should be an integer');
     }
   }
 
-  makeWithdrawal(int) {
+  makeWithdrawal(int, date) {
     if (typeof int === 'number' && !isNaN(int) && !isNaN(parseFloat(int))) {
       const formattedInt = parseFloat(int.toFixed(2));
       this.balance = this.balance - formattedInt;
@@ -29,6 +32,7 @@ class BankStatement {
 
   print() {
     console.log("date || credit || debit || balance")
+    console.log(this.statement[0])
   }
 }
 

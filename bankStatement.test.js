@@ -51,9 +51,16 @@ describe("BankStatement class", () => {
     expect(bankStatement.getBalance()).toBe(1000.68)
     })
 
-  it('shows the headings in the console log', () => {
-    const consoleSpy = jest.spyOn(console, 'log');
+  it('shows the statement for a deposit with a date, under the headings', () => {
+    const consoleSpy = jest.spyOn(global.console, 'log');
+    
+    bankStatement.makeDeposit(1000.00, "10/01/2023")
     bankStatement.print();
-    expect(consoleSpy).toHaveBeenCalledWith('date || credit || debit || balance');
+
+    expect(consoleSpy).toHaveBeenCalled()
+    expect(consoleSpy).toHaveBeenCalledTimes(2);
+    expect(consoleSpy.mock.calls).toContainEqual(['date || credit || debit || balance'], ['10/01/2023 || 1000.00 || || 1000.00']);
+
+    consoleSpy.mockRestore();
   });
 });
