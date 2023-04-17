@@ -26,6 +26,10 @@ class BankStatement {
       throw new Error('Input should be an integer');
     }
   }
+
+  print() {
+    console.log("date || credit || debit || balance")
+  }
 }
 
 module.exports = BankStatement;

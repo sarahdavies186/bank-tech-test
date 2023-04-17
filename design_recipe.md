@@ -70,7 +70,7 @@ expect(bankStatement.getBalance()).toBe("input should be an integer")
 })
 
 it('rounds to 2 decimal places', () => {
-bankStatement.makeDeposit("1000);
+bankStatement.makeDeposit("1000");
 expect(bankStatement.getBalance()).toBe(1000.00)
 })
 

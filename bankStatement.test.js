@@ -50,4 +50,10 @@ describe("BankStatement class", () => {
     bankStatement.makeDeposit(1000.67733); 
     expect(bankStatement.getBalance()).toBe(1000.68)
     })
+
+  it('shows the headings in the console log', () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+    bankStatement.print();
+    expect(consoleSpy).toHaveBeenCalledWith('date || credit || debit || balance');
+  });
 });
