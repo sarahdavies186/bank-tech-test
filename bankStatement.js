@@ -10,6 +10,10 @@ class BankStatement {
   makeDeposit(int) {
     this.balance = this.balance + int;
   }
+
+  makeWithdrawal(int) {
+    this.balance = this.balance - int;
+  }
 }
 
 module.exports = BankStatement;

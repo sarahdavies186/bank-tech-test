@@ -21,4 +21,11 @@ describe("BankStatement class", () => {
     bankStatement.makeDeposit(2000.0);
     expect(bankStatement.getBalance()).toBe(3000.0);
   });
+
+  it('shows the correct blance when deposits and withdrawals are made', () => {
+    bankStatement.makeDeposit(1000.00);
+    bankStatement.makeDeposit(2000.00);
+    bankStatement.makeWithdrawal(500.00);
+    expect(bankStatement.getBalance()).toBe(2500.00)
+    })
 });
