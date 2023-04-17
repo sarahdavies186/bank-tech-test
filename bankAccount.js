@@ -1,6 +1,6 @@
 const { format } = require("prettier");
 
-class BankStatement {
+class BankAccount{
   constructor() {
     this.balance = 0;
     this.statement = []
@@ -10,7 +10,7 @@ class BankStatement {
     return this.balance;
   }
 
-  makeDeposit(int, date) {
+  makeDeposit(int, date) { //date has to be a string
     if (typeof int === 'number' && !isNaN(int) && !isNaN(parseFloat(int))) {
       const formattedInt = parseFloat(int.toFixed(2));
       this.balance = this.balance + formattedInt;
@@ -21,7 +21,7 @@ class BankStatement {
     }
   }
 
-  makeWithdrawal(int, date) {
+  makeWithdrawal(int, date) { //date has to be a string
     if (typeof int === 'number' && !isNaN(int) && !isNaN(parseFloat(int))) {
       const formattedInt = parseFloat(int.toFixed(2));
       this.balance = this.balance - formattedInt;
@@ -40,7 +40,7 @@ class BankStatement {
   }
 }
 
-module.exports = BankStatement;
+module.exports = BankAccount;
 
 
 // const BankStatement = require('./bankStatement.js')
