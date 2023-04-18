@@ -1,5 +1,3 @@
-const { format } = require("prettier");
-
 class BankAccount{
   constructor() {
     this.balance = 0;
@@ -15,6 +13,9 @@ class BankAccount{
   }
 
   makeWithdrawal(amount, date) { //date has to be a string
+    if (typeof isNaN(amount) && isNaN(parseFloat(amount))) {
+      throw new Error('Input should be an integer');
+    }
     if (amount < this.balance) {
     this.addTransaction(amount, date, false)
     } else {
@@ -23,7 +24,7 @@ class BankAccount{
   }
 
   addTransaction(amount, date, isDeposit) {
-    if (typeof amount !== 'number' && isNaN(amount) && isNaN(parseFloat(amount))) {
+    if (typeof isNaN(amount) && isNaN(parseFloat(amount))) {
       throw new Error('Input should be an integer');
     }
 
