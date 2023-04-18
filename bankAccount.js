@@ -29,11 +29,8 @@ class BankAccount{
     }
 
     const formattedAmount = parseFloat(amount.toFixed(2));
-
     const credit = isDeposit ? formattedAmount.toFixed(2) : ""
-
     const debit = isDeposit ? "" : formattedAmount.toFixed(2)
-
     this.balance = isDeposit ? this.balance += formattedAmount : this.balance -= formattedAmount;
 
     const date = new Date().toLocaleDateString('en-gb');
