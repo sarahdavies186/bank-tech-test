@@ -19,35 +19,20 @@ class BankAccount{
   }
 
   addTransaction(amount, date, isDeposit) {
-    if (typeof int !== 'number' && isNaN(amount) && isNaN(parseFloat(amount))) {
+    if (typeof amount !== 'number' && isNaN(amount) && isNaN(parseFloat(amount))) {
       throw new Error('Input should be an integer');
     }
+
     const formattedAmount = parseFloat(amount.toFixed(2));
 
-    let credit;
-    if(isDeposit === true) {
-      credit = formattedAmount.toFixed(2)
-    } else {
-      credit = ""
-    }
+    const credit = isDeposit ? formattedAmount.toFixed(2) : ""
 
-    let debit; 
-    if(isDeposit === false) {
-      debit = formattedAmount.toFixed(2)
-    } else {
-      debit = ""
-    }
+    const debit = isDeposit ? "" : formattedAmount.toFixed(2)
 
-    if(isDeposit === true) {
-      this.balance += formattedAmount;
-    } else {
-      this.balance -= formattedAmount;
-    }
+    this.balance = isDeposit ? this.balance += formattedAmount : this.balance -= formattedAmount;
 
     const statement = `${date} || ${credit} || ${debit} || ${this.balance.toFixed(2)}`
-
     this.statement.push(statement)
-
   }
 
   print() {
