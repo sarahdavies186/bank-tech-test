@@ -53,6 +53,10 @@ describe("BankAccount class", () => {
 
   it("shows the statement for a deposit with a date, under the headings", () => {
     const consoleSpy = jest.spyOn(global.console, "log");
+    
+    const mockDate = new Date('2023-04-18T00:00:00.000Z');
+    jest.spyOn(global, 'Date').mockImplementation(() => mockDate);
+    const date = new Date().toLocaleDateString('en-gb');
 
     bankAccount.makeDeposit(1000.0, "10/01/2023");
     bankAccount.print();
@@ -63,7 +67,7 @@ describe("BankAccount class", () => {
       "date || credit || debit || balance",
     ]),
       expect(consoleSpy.mock.calls[1]).toEqual([
-        "18/04/2023 || 1000.00 ||  || 1000.00",
+        `${date} || 1000.00 ||  || 1000.00`,
       ]);
 
     consoleSpy.mockRestore();
@@ -71,6 +75,10 @@ describe("BankAccount class", () => {
 
   it("shows the statement for a deposit and withdrawal with a date, under the headings", () => {
     const consoleSpy = jest.spyOn(global.console, "log");
+
+    const mockDate = new Date('2023-04-18T00:00:00.000Z');
+    jest.spyOn(global, 'Date').mockImplementation(() => mockDate);
+    const date = new Date().toLocaleDateString('en-gb');
 
     bankAccount.makeDeposit(1000.0);
     bankAccount.makeWithdrawal(500.0);
@@ -82,10 +90,10 @@ describe("BankAccount class", () => {
       "date || credit || debit || balance",
     ]),
       expect(consoleSpy.mock.calls[1]).toEqual([
-        "18/04/2023 ||  || 500.00 || 500.00",
+        `${date} ||  || 500.00 || 500.00`,
       ]);
     expect(consoleSpy.mock.calls[2]).toEqual([
-      "18/04/2023 || 1000.00 ||  || 1000.00",
+      `${date} || 1000.00 ||  || 1000.00`,
     ]);
 
     consoleSpy.mockRestore();
