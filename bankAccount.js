@@ -60,7 +60,7 @@ class BankAccount{
       this.balance -= formattedAmount;
     }
 
-    const statement = `${date} || ${credit} || ${debit} || ${this.balance}`
+    const statement = `${date} || ${credit} || ${debit} || ${this.balance.toFixed(2)}`
 
     this.statement.push(statement)
 
