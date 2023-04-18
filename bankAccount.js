@@ -15,7 +15,11 @@ class BankAccount{
   }
 
   makeWithdrawal(amount, date) { //date has to be a string
+    if (amount < this.balance) {
     this.addTransaction(amount, date, false)
+    } else {
+      throw new Error('Not enough funds');
+    }
   }
 
   addTransaction(amount, date, isDeposit) {

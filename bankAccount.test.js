@@ -41,45 +41,60 @@ describe("BankAccount class", () => {
     }).toThrow("Input should be an integer");
   });
 
-  it('rounds to 2 decimal places', () => {
+  it("rounds to 2 decimal places", () => {
     bankAccount.makeDeposit(1000.33);
-    expect(bankAccount.getBalance()).toBe(1000.33)
-    })
+    expect(bankAccount.getBalance()).toBe(1000.33);
+  });
 
-  it('rounds to 2 decimal places', () => {
-    bankAccount.makeDeposit(1000.67733); 
-    expect(bankAccount.getBalance()).toBe(1000.68)
-    })
+  it("rounds to 2 decimal places", () => {
+    bankAccount.makeDeposit(1000.67733);
+    expect(bankAccount.getBalance()).toBe(1000.68);
+  });
 
-  it('shows the statement for a deposit with a date, under the headings', () => {
-    const consoleSpy = jest.spyOn(global.console, 'log');
-    
-    bankAccount.makeDeposit(1000.00, "10/01/2023")
+  it("shows the statement for a deposit with a date, under the headings", () => {
+    const consoleSpy = jest.spyOn(global.console, "log");
+
+    bankAccount.makeDeposit(1000.0, "10/01/2023");
     bankAccount.print();
 
-    expect(consoleSpy).toHaveBeenCalled()
+    expect(consoleSpy).toHaveBeenCalled();
     expect(consoleSpy).toHaveBeenCalledTimes(2);
-    expect(consoleSpy.mock.calls[0]).toEqual(['date || credit || debit || balance']),
-    expect(consoleSpy.mock.calls[1]).toEqual(['10/01/2023 || 1000.00 ||  || 1000.00']);
+    expect(consoleSpy.mock.calls[0]).toEqual([
+      "date || credit || debit || balance",
+    ]),
+      expect(consoleSpy.mock.calls[1]).toEqual([
+        "10/01/2023 || 1000.00 ||  || 1000.00",
+      ]);
 
     consoleSpy.mockRestore();
   });
 
-  it('shows the statement for a deposit and withdrawal with a date, under the headings', () => {
-    const consoleSpy = jest.spyOn(global.console, 'log');
-    
-    bankAccount.makeDeposit(1000.00, "10/01/2023")
-    bankAccount.makeWithdrawal(500.00, "14/01/2023")
+  it("shows the statement for a deposit and withdrawal with a date, under the headings", () => {
+    const consoleSpy = jest.spyOn(global.console, "log");
+
+    bankAccount.makeDeposit(1000.0, "10/01/2023");
+    bankAccount.makeWithdrawal(500.0, "14/01/2023");
     bankAccount.print();
 
-    expect(consoleSpy).toHaveBeenCalled()
+    expect(consoleSpy).toHaveBeenCalled();
     expect(consoleSpy).toHaveBeenCalledTimes(3);
-    expect(consoleSpy.mock.calls[0]).toEqual(['date || credit || debit || balance']),
-    expect(consoleSpy.mock.calls[1]).toEqual(['14/01/2023 ||  || 500.00 || 500.00']);
-    expect(consoleSpy.mock.calls[2]).toEqual(['10/01/2023 || 1000.00 ||  || 1000.00']);
+    expect(consoleSpy.mock.calls[0]).toEqual([
+      "date || credit || debit || balance",
+    ]),
+      expect(consoleSpy.mock.calls[1]).toEqual([
+        "14/01/2023 ||  || 500.00 || 500.00",
+      ]);
+    expect(consoleSpy.mock.calls[2]).toEqual([
+      "10/01/2023 || 1000.00 ||  || 1000.00",
+    ]);
 
     consoleSpy.mockRestore();
   });
 
-  //test needed for if withdrawal amount would make balance go below 0 
+  it("throws an error if withdrawal amount is higher than the balance", () => {
+    expect(() => {
+      bankAccount.makeWithdrawal(1000);
+    }).toThrow("Not enough funds");
+  });
+  
 });
