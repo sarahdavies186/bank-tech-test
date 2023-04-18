@@ -8,22 +8,22 @@ class BankAccount{
     return this.balance;
   }
 
-  makeDeposit(amount, date) { //date has to be a string
-    this.addTransaction(amount, date, true)
+  makeDeposit(amount) { //date has to be a string
+    this.addTransaction(amount, true)
   }
 
-  makeWithdrawal(amount, date) { //date has to be a string
+  makeWithdrawal(amount) { //date has to be a string
     if (typeof isNaN(amount) && isNaN(parseFloat(amount))) {
       throw new Error('Input should be an integer');
     }
     if (amount < this.balance) {
-    this.addTransaction(amount, date, false)
+    this.addTransaction(amount, false)
     } else {
       throw new Error('Not enough funds');
     }
   }
 
-  addTransaction(amount, date, isDeposit) {
+  addTransaction(amount, isDeposit) {
     if (typeof isNaN(amount) && isNaN(parseFloat(amount))) {
       throw new Error('Input should be an integer');
     }
@@ -35,6 +35,8 @@ class BankAccount{
     const debit = isDeposit ? "" : formattedAmount.toFixed(2)
 
     this.balance = isDeposit ? this.balance += formattedAmount : this.balance -= formattedAmount;
+
+    const date = new Date().toLocaleDateString('en-gb');
 
     const statement = `${date} || ${credit} || ${debit} || ${this.balance.toFixed(2)}`
     this.statement.push(statement)
