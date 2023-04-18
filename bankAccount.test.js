@@ -80,4 +80,6 @@ describe("BankAccount class", () => {
 
     consoleSpy.mockRestore();
   });
+
+  //test needed for if withdrawal amount would make balance go below 0 
 });
