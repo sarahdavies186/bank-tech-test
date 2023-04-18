@@ -8,11 +8,11 @@ class BankAccount{
     return this.balance;
   }
 
-  makeDeposit(amount) { //date has to be a string
+  makeDeposit(amount) {
     this.addTransaction(amount, true)
   }
 
-  makeWithdrawal(amount) { //date has to be a string
+  makeWithdrawal(amount) { 
     if (typeof isNaN(amount) && isNaN(parseFloat(amount))) {
       throw new Error('Input should be an integer');
     }
