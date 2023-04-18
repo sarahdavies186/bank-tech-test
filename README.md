@@ -27,8 +27,12 @@ const BankAccount = require('./bankAccount.js')
 const bankAccount = new BankAccount();
 ```
 ## About the application
-The banking application works with the functions of makeDeposit, makeWithdrawal and print the statement. The application throws an error if the input is not an integer, or if a withdrawal is attempted where the amount is larger than the current balance it will throw an error to say not enough funds. The bank application will also round numbers to 2 decimal places. It uses the current date for transaction, in UK time format. 
+I have structed my program by using a class BankAccount, which has different functions within it, including makeDeposit, makeWithdrawal and print the statement. I refactored my code during the building process to make sure that I was repeating as little as needed. To do this I added a function called addTransaction, which uses conditional ternary operators, on whether it is making a deposit or withdrawal, and adds the transaction correctly to the statement following this. 
+The program throws an error if the input is not an integer, or if a withdrawal is attempted where the amount is larger than the current balance it will throw an error to say not enough funds. The bank application will also round numbers to 2 decimal places. It uses the current date for transaction, in UK time format. 
 ## Examples: 
+
+<img width="561" alt="Screenshot 2023-04-18 at 15 13 49" src="https://user-images.githubusercontent.com/99144401/232804946-39418cb3-758c-4eae-95a9-7f2e32cb35fa.png">
+
 ```
 const BankAccount = require('./bankAccount.js')
 const bankAccount = new BankAccount();
