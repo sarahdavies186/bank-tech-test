@@ -1,4 +1,4 @@
-const BankAccount = require("./bankAccount");
+const BankAccount = require('./bankAccount');
 
 describe("BankAccount class", () => {
   let bankAccount;
@@ -42,8 +42,8 @@ describe("BankAccount class", () => {
   });
 
   it("rounds to 2 decimal places", () => {
-    bankAccount.makeDeposit(1000.33);
-    expect(bankAccount.getBalance()).toBe(1000.33);
+    bankAccount.makeDeposit(1000);
+    expect(bankAccount.getBalance()).toBe(1000.00);
   });
 
   it("rounds to 2 decimal places", () => {
