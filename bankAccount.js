@@ -49,8 +49,3 @@ class BankAccount{
 
 module.exports = BankAccount;
 
-
-// const BankAccount = require('./bankAccount.js')
-// const bankAccount = new BankAccount();
-// bankAccount.makeDeposit(100, "10/01/23")
-// bankAccount.print();
