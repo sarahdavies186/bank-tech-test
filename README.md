@@ -17,6 +17,7 @@ git clone https://github.com/sarahdavies186/bank-tech-test.git
 npm install
 ```
 ### Test
+Testing has been carried out with jest, and test coverage is 100%
 ```
 npm test
 ```
